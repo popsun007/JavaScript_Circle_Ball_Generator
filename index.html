@@ -4,7 +4,7 @@
 </head>
 <body>
 
-	<svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+	<svg id="svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
 
 	<script>
 	function Circle(cx, cy, html_id)
@@ -20,15 +20,15 @@
 		this.initialize = function(){
 			//give a random velocity for the circle
 			this.info.velocity = {
-				x: randomNumberBetween(-3,3),
-				y: randomNumberBetween(-3,3)
+				x: randomNumberBetween(0,3),
+				y: randomNumberBetween(0,3)
 			}
 
 			//create a circle 
 			var circle = makeSVG('circle', 
 				{ 	cx: this.info.cx,
 				  	cy: this.info.cy,
-				  	r:  10,
+				  	r:  40,
 				  	id: html_id,
 				  	style: "fill: black"
 				});
@@ -89,14 +89,15 @@
 		}
 
 		//create one circle when the game starts
-		this.createNewCircle(document.body.clientWidth/2, document.body.clientHeight/2);
+		this.createNewCircle(document.body.clientWidth, document.body.clientHeight);
 	}
 
 	var playground = new PlayGround();
-	setInterval(playground.loop, 15);
+	setInterval(playground.loop, 4);
 
 	document.onclick = function(e) {
-		playground.createNewCircle(e.x,e.y);
+		console.log(document.body.clientWidth);
+		playground.createNewCircle(e.x, e.y);
 	}
 	
 	</script>
